@@ -15,5 +15,5 @@ def signup(request):
 """
 
 def index(request):
-    print("Index View Called")
+    #print("Index View Called")
     return render(request, 'index.html')
