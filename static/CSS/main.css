@@ -34,7 +34,7 @@ html{
     height: 90%;
     width: 100%;
     z-index: -2;
-    background-image:url(Images/5529077.jpg);
+    background-image:url(/templates/Images/5529077.jpg);
 }
 body{
     margin: 0px;
