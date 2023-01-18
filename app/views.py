@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import SignUpForm
-from .views import index
+#from .forms import SignUpForm
+#from .views import index
 
 """
 def signup(request):
