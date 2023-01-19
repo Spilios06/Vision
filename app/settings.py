@@ -121,8 +121,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-MEDIA_ROOT = '/Vision/Images'
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'Images')
 MEDIA_URL = '/Images/'
 
 # Default primary key field type
