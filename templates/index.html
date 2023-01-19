@@ -18,13 +18,14 @@
                     </svg>
                 </div>
                 <div class="Title">
-                    <a href="./index.html"><img src="/Images/Drawing-1.sketchpad__1_-removebg-preview.png" class="Logo"></a> 
+                    <a href="{% url 'index' %}"><img src="/Images/Drawing-1.sketchpad__1_-removebg-preview.png" class="Logo"></a> 
                 </div>
                 <div class="Logins">
+                    <button class="loginbtn" onclick="ToLogin()">Login</button>
                     <script>
-                        function Changewindow(path){
+                        function ToLogin(){
                             
-                            window.location.href = path; 
+                            window.location.href = "{% url 'login' %}"; 
                         }
                     </script>
                     <a href="{% url 'login' %}">Login</a>
