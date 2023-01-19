@@ -17,3 +17,7 @@ def signup(request):
 def index(request):
     #print("Index View Called")
     return render(request, 'index.html')
+
+def login(request):
+    #print("Login View Called")
+    return render(request, 'login.html')

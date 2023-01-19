@@ -6,6 +6,7 @@ A web app created with the Django framework in python as a backend and the Sprin
 
 * HTML code should be added under the "templates" directory
 * CSS and JavaScript should be added under the "static" directory and subsequently in their respective sub-directory
+* Python code should generally be under the "app" directory
 
 ## How to test
 
