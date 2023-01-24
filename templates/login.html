@@ -33,10 +33,14 @@
                     <div class="Loginbtn">
                         <button class="btn" type="submit" onclick="">Log in</button>
                     </div>
-                    <div class="Registerarea">
-                        <a href="" class="Register">
-                            Don't have an account?
-                        </a>
+                    <div class="Register">
+                        <button class="signup" onclick="ToRegister()">signup</button>
+                        <script>
+                            function ToRegister(){
+                                
+                                window.location.href = "{% url 'signup' %}"; 
+                            }
+                        </script>
                     </div>
 
                 </div>
