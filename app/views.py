@@ -6,10 +6,21 @@ def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}!')
-            return redirect('login')
+            # Get the email and password from the form
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            password_confirm = form.cleaned_data['password_confirm']
+            
+            # Check if the passwords match
+            if password != password_confirm:
+                return render(request, 'signup.html', {'form': form, 'error': 'Passwords do not match'})
+            
+            # Create a new user
+            user = User(email=email, password=password)
+            user.save()
+            
+            # Redirect the user to the homepage
+            return redirect('home')
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})

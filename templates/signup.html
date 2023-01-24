@@ -18,26 +18,10 @@
                 <div class="Otherdivider">
                     <h1 class="Registertext">Register</h1>
                 </div>
-                <div class="Inputboxes">
-
-
-                    <form method="post">
-                        
-                    <div class="Email">
-                        <input type="text" class="Username" placeholder="Username"/>
-                        <input type="email" class="EmailBox" placeholder="Email address"/>
-                    </div>
-                    
-                    <div class="Password">
-                        <input type="password" class="PasswordBox" placeholder="Password"/>
-                        <input type="password" class="PasswordBox2" placeholder="Repeat password"/>
-                    </div>
-
-
-                    </form>
-                </div>
                 <div class="Finalarea">
                     <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
                         <input type="submit" value="Sign Up">
                     </form>
 
