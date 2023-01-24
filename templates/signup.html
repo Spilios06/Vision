@@ -22,9 +22,7 @@
 
 
                     <form method="post">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <input type="submit" value="Sign Up">
+                        
                     <div class="Email">
                         <input type="text" class="Username" placeholder="Username"/>
                         <input type="email" class="EmailBox" placeholder="Email address"/>
@@ -37,15 +35,13 @@
 
 
                     </form>
-
-
-                    
                 </div>
                 <div class="Finalarea">
-
-                    <div class="Loginbtn">
-                        <button class="btn" type="submit" onclick="">Sign up</button>
-                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="Sign Up">
+                    </form>
 
                 </div>
                 
