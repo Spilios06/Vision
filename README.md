@@ -10,10 +10,28 @@ A web app created with the Django framework in python as a backend.
 
 ## How to test
 
+First you need to install the dependencies for this project by running the following command in a terminal
+
+```bash
+pip install -r requirements.txt
+```
+
+In order to create the necessary SQL statements you are going to need to run
+
+```bash
+python manage.py migrate
+```
+
 In order to execute the service localy run the following command in a terminal
 
 ```bash
 python manage.py runserver
+```
+
+If you wish to create an admin account you will need to run
+
+```bash
+python manage.py createsuperuser
 ```
 
 ## Credits
