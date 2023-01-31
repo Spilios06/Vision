@@ -15,3 +15,7 @@ In order to execute the service localy run the following command in a terminal
 ```bash
 python manage.py runserver
 ```
+
+## Credits
+
+* **Account System** -> https://github.com/earthcomfy/Django-registration-and-login-system.git
