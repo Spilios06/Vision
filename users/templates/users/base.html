@@ -3,16 +3,15 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{% static '/Vision/static/CSS/main.css' %}">
+    {% load static %}<link rel="stylesheet" href="{% static '/CSS/main.css' %}">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--Font awesome icons -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-    <title>{% block title %} {% endblock %} </title>
+    {% block title %} Vision {% endblock %}
 </head>
 
 
@@ -89,7 +88,7 @@
 </div>
 <div class="Main-image"> 
     
-    <img src="/Images/5529077.jpg" id="bckimg">
+    {% load static %}<img src="{% static 'CSS/5529077.jpg' %}" id="bckimg">
     <div style="height: 75%;z-index: 15 s;width: 45%; overflow-x: hidden;display: flex;position:absolute;left: 27%;">
         <img src="file:///Users/konst/Desktop/Gettingwebsitev2/Images/BCK.png" id="Main-image">
     </div>
