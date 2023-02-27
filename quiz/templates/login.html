@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="col-md-6 offset-md-3">
+<div class="Login-Content" id="Resize-Login">
     <h1 class="text-center">Login</h1>
     <form method="POST">
         {% csrf_token %}
@@ -14,4 +14,14 @@
     </form>
 </div>
 
+<script>
+    window.addEventListener('load', function(){
+        const Area = document.getElementById("Resize-Login");
+        Area.width = window.innerWidth;
+        Area.height = window.innerHeight;
+        console.log(window.innerHeight);
+    })
+
+
+</script>
 {% endblock %}

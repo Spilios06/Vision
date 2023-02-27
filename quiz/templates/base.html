@@ -5,13 +5,14 @@
 <head>
   <meta charset="utf-8">
 
-  <title>{% trans "Example Quiz Website" %} | {% block title %}{% endblock %}</title>
+  <title>{% trans "Vision" %} | {% block title %} Home {% endblock %}</title>
   <meta name="description" content="{% block description %}{% endblock %}">
 
   <!-- styles -->
   <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-    crossorigin="anonymous">
+  <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    crossorigin="anonymous">-->
+  <!--<link rel="stylesheet" href="/quiz/templates/Base.css">-->
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,40 +21,78 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="{% url 'index' %}">Quiz App</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav rm-auto">
-        {% if user.is_authenticated %}
-        <li class="nav-tem" style="color:gray">
-          <a href="{% url 'quiz_index' %}" class="nav-link">Quizzes</a>
-        </li>
-        <li class="nav-tem" style="color:gray">
-            <a href="{% url 'quiz_progress' %}" class="nav-link">Progress</a>
-          </li>
-        {% endif %}
-
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item ">
-          {% if user.is_authenticated %}
-          <a class="nav-link" href="{% url 'logout' %}">logout</a>
-          {% else %}
-          <a class="nav-link" href="{% url 'login' %}">Login</a>
-          {% endif %}
-        </li>
-      </ul>
+  <div id="SideNav">
+      <div class="NavPage">
+          <div class="NavTitle">
+              <h1 style="font-family: monospace;">V I S I O N</h1>
+          </div>
+          <div id="Spacer">
+              &nbsp;
+          </div>
+          <div style="height: 1%;width: 100%;background-color: #292c3c;">
+              &nbsp;
+          </div>
+          <div class="Shortcut">
+              <button id="Shortcut-buttons">Assignments</button>
+          </div>
+          <div style="height: 1%;width: 100%;background-color: #292c3c;">
+              &nbsp;
+          </div>
+          <div class="Shortcut">
+              <button id="Shortcut-buttons">Upcoming tests</button>
+          </div>
+          <div style="height: 1%;width: 100%;background-color: #292c3c;">
+              &nbsp;
+          </div>
+          <div class="Shortcut">
+              <button id="Shortcut-buttons">Past tests</button>
+          </div>
+          <div style="height: 1%;width: 100%;background-color: #292c3c;">
+              &nbsp;
+          </div>
+          <div style="height: 19%;width: 100%;">
+              &nbsp;
+          </div>
+          <div class="LowerFill">
+              <button id="NavLogin">Login</button><br>
+              <h1 style="font-size: 100%;">OR</h1>
+              <button id="NavRegister";>Register</button>
+          </div>
+      </div>
+      <div class="CloseNav">
+          <button id="CloseNav" style="font-size:30px;cursor:pointer" onclick="CloseNav()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+      </div>
+          
     </div>
-  </nav>
+  <div class="Top-bar">
+    <div class="Dropdown">
+      <button id="Dropdown" style="font-size:30px;cursor:pointer" onclick="OpenNav()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48px" height="48px" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+  </div>
+    <div class="Middle-area">
+      <a class="Title_text" href="{% url 'index' %}">V I S I O N</a>
+    </div>
+    <div class="Buttons">
+      {% if user.is_authenticated %}
+        <button id="Logout" onclick="ForLogout()"> logout</button> 
+      {% else %}
+        <button id="Login" onclick="ForLogin()"> Login </button>
+      {% endif %}
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    </div>
+  </div>
 
 
   <!-- Before the quiz content -->
 
-  <div class="container">
+  <div class="Content" style="margin: 0 0 0 0; padding: 0;">
     {% if messages %} {% for message in messages %}
     <div class="alert alert-warning alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -66,8 +105,222 @@
   </div>
 
   <!-- After the quiz content -->
+  
+
+
+<script>
+      function OpenNav(){
+          document.getElementById("SideNav").style.width="20%";
+      }
+      function CloseNav(){
+          document.getElementById("SideNav").style.width="0";
+      }
+      function ForLogin(){
+        let path = '{% url "login" %}';
+        location.href = path;
+      }
+      function ForLogout(){
+        let path = '{% url "logout" %}';
+        location.href = path;
+      }
+      /*window.addEventListener('load', function(){
+        const Sw = window.innerWidth;
+        const Sh = window.innerHeight; 
+        const backgroundimg = document.getElementById('Backimage');
+        backgroundimg.width = Sw;
+      })*/
+      
+  </script>
 
 
 </body>
 
 </html>
+
+<style>
+  html{
+    background-color: #232634;
+    margin: 0;
+    height: 100%;
+  }
+  body{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .Top-bar{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    background-color: #f2d5cf;
+    align-items: center;
+    vertical-align: center;
+  }
+  .Dropdown{
+    /*
+    Dropdown area
+    */
+    width: 30%;
+    height: 100%;
+    text-align: left;
+    align-items: left;
+    justify-content: left;
+}
+#Dropdown{
+    /*
+    Dropdown button
+    */
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    background-color: #ffffff00;
+    border-color: #ffffff00;
+}
+.Middle-area{
+    width: 40%;
+    height: 100%;
+    text-align: center;
+}
+.Buttons{
+    /*
+    Login and register area
+    */
+    width: 30%;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: right;
+    padding-right: 5px;
+    
+}
+#Login{
+    width: 25%;
+    height: 40%;
+    background-color: #868686;
+    border-color: #99d1db00;
+    border-radius: 5px;
+    cursor:pointer;
+}
+#Register{
+    /*
+    Buttons for Login and Register
+    */
+    width: 25%;
+    height: 40%;
+    background-color: #838ba700;
+    border-color: 1px #838ba7;
+    border-radius: 5px;
+    cursor:pointer;
+}
+#Login:hover{
+    background-color: #95c7d0;
+}
+#Register:hover{
+    background-color: #838ba7;
+}
+.Content-under-header{
+    background-color: #414559;
+    height: 40%;
+    text-align: center;
+}
+#SideNav{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.3s;
+    display: flex;
+}
+.NavPage{
+    width: 80%;
+    height: 100%;
+    background-color: #414559;
+    box-shadow: 0px 0px 20px 3px #000000;
+    padding: 0;
+}
+.CloseNav{
+    display: grid;
+    padding: 0;
+    top: 15%;
+    width: 15%;
+    height: 5%;
+    background-color: #737994;
+    justify-content: center;
+    align-items: center;
+}
+#CloseNav{
+    width: 100%;
+    height: 100%;
+    background-color: #00000000;
+    border-color: #00000000;
+}
+.NavTitle{
+    text-align: center;
+    width: 100%;
+    height: 10%;
+}
+.Shortcut{
+    height: 10%;
+    width: 100%;
+    display: flex;
+}
+#Spacer{
+    height: 9%;
+    width: 100%;
+}
+#Shortcut-buttons{
+    width: 100%;
+    height: 100%;
+    font-size: 150%;
+    background-color: #626880;
+    border-color: #454a5b00;
+    cursor: pointer;
+}
+#NavLogin, #NavRegister{
+    width: 100%;
+    height: 30%;
+    background-color: #626880;
+    border-color: #00000000;
+    font-size: 150%;
+    cursor: pointer;
+}
+.LowerFill{
+    height: 25%;
+    width: 100%;
+    text-align: center;
+}
+#Shortcut-buttons:hover{
+    width: 100%;
+    height: 100%;
+    font-size: 150%;
+    background-color: #b5bfe2;
+    border-color: #454a5b00;
+    cursor: pointer;
+}
+.Title_text{
+  font-size: 200%;
+  color: black;
+}
+.Title_text:hover{
+  color: black;
+  text-decoration: none;
+}
+.Content{
+  height: 80%;
+  width: 100%;
+}
+.Hero-Image{
+  width: 100%;
+  height: 750px;
+  background-color: black;
+}
+.Index-Content{
+  text-align: centerz;
+}
+
+
+</style>
