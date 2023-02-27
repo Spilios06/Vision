@@ -22,6 +22,7 @@
 
 <body>
   <div id="SideNav">
+      {% if user.is_authenticated %}
       <div class="NavPage">
           <div class="NavTitle">
               <h1 style="font-family: monospace;">V I S I O N</h1>
@@ -54,11 +55,48 @@
               &nbsp;
           </div>
           <div class="LowerFill">
-              <button id="NavLogin">Login</button><br>
-              <h1 style="font-size: 100%;">OR</h1>
-              <button id="NavRegister";>Register</button>
+              <button id="NavLogin" onclick="ForLogout()">Logout</button><br>
           </div>
       </div>
+      {% else %}
+      <div class="NavPage">
+        <div class="NavTitle">
+            <h1 style="font-family: monospace;">V I S I O N</h1>
+        </div>
+        <div id="Spacer">
+            &nbsp;
+        </div>
+        <div style="height: 1%;width: 100%;background-color: #292c3c;">
+            &nbsp;
+        </div>
+        <div class="Shortcut">
+            <button id="Shortcut-buttons">Assignments</button>
+        </div>
+        <div style="height: 1%;width: 100%;background-color: #292c3c;">
+            &nbsp;
+        </div>
+        <div class="Shortcut">
+            <button id="Shortcut-buttons">Upcoming tests</button>
+        </div>
+        <div style="height: 1%;width: 100%;background-color: #292c3c;">
+            &nbsp;
+        </div>
+        <div class="Shortcut">
+            <button id="Shortcut-buttons">Past tests</button>
+        </div>
+        <div style="height: 1%;width: 100%;background-color: #292c3c;">
+            &nbsp;
+        </div>
+        <div style="height: 19%;width: 100%;">
+            &nbsp;
+        </div>
+        <div class="LowerFill">
+            <button id="NavLogin" onclick="ForLogin()">Login</button><br>
+            <h1 style="font-size: 100%;">OR</h1>
+            <button id="NavRegister";>Register</button>
+        </div>
+    </div>
+    {% endif %}
       <div class="CloseNav">
           <button id="CloseNav" style="font-size:30px;cursor:pointer" onclick="CloseNav()">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
@@ -162,8 +200,9 @@
     */
     width: 30%;
     height: 100%;
+    display: flex;
     text-align: left;
-    align-items: left;
+    align-items: center;
     justify-content: left;
 }
 #Dropdown{
@@ -179,7 +218,9 @@
 .Middle-area{
     width: 40%;
     height: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .Buttons{
     /*
@@ -304,6 +345,7 @@
 .Title_text{
   font-size: 200%;
   color: black;
+  text-decoration: none;
 }
 .Title_text:hover{
   color: black;
