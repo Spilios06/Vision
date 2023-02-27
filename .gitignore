@@ -5,3 +5,4 @@ csv/
 *.code
 *__pycache__
 admin.txt
+db.sqlite3
