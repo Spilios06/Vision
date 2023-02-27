@@ -36,4 +36,4 @@ python manage.py createsuperuser
 
 ## Credits
 
-* **Account System** -> https://github.com/earthcomfy/Django-registration-and-login-system.git
+* **Original Repo** -> [repo](https://github.com/sswapnil2/django-quiz-app.git)
