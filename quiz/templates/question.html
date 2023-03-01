@@ -7,7 +7,7 @@
 {% block description %} {{ quiz.title }} - {{ quiz.description }} {% endblock %}
 
 {% block content %}
-
+<!--
 {% if previous.answers %}
 
   <p class="muted"><small>{% trans "The previous question" %}:</small></p>
@@ -39,30 +39,30 @@
 {% endif %}
 
 <br />
-
+-->
 {% if question %}
+<div class="Quizing-island">
+	{% if progress %}
+		<div style="float: right;padding-right: 15px;">
+			<h1 style="font-size: x-large;">{% trans "Question" %} {{ progress.0|add:1 }} {% trans "of" %} {{ progress.1 }}</h1>
+		</div>
+	{% endif %}
 
-{% if progress %}
-<div style="float: right;">
-{% trans "Question" %} {{ progress.0|add:1 }} {% trans "of" %} {{ progress.1 }}
-</div>
-{% endif %}
-
-<p>
+	<p>
   <small class="muted">{% trans "Question category" %}:</small>
   <strong>{{ question.category }}</strong>
-</p>
+	</p>
 
-<p class="lead">{{ question.content }}</p>
+	<p class="lead">{{ question.content }}</p>
 
-{% if question.figure %}
+		{% if question.figure %}
     <img src="{{ question.figure.url }}" alt="{{ question.content }}" />
-{% endif %}
+	{% endif %}
 
-<form action="" method="POST">{% csrf_token %}
-  <input type=hidden name="question_id" value="{{ question.id }}">
+	<form action="" method="POST">{% csrf_token %}
+  	<input type=hidden name="question_id" value="{{ question.id }}">
 
-  <ul class="list-group">
+  	<ul class="list-group">
 
 	{% for answer in form.answers %}
 	  <li class="list-group-item">
@@ -72,15 +72,22 @@
 
   </ul>
     {% if progress.0|add:1 == progress.1 %}
-    <input type="submit" value={% trans "Submit" %} class="btn btn-large btn-block btn-warning" >
+    <input type="submit" value="Submit" class="Quizbtn" >
     {% else %}
-        <input type="submit" value={% trans "Next" %} class="btn btn-large btn-block btn-warning" >
+        <input type="submit" value="Next" class="Quizbtn" >
     {% endif %}
 </form>
+	
+</div>
+
 
 {% endif %}
 
-<hr>
-
+<script>
+	window.addEventListener('load',function(){
+		document.getElementById('Ceditor').style.alignItems = "center";
+		document.getElementById('Ceditor').style.justifyContent = "center";
+	})
+</script>
 
 {% endblock %}

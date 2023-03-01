@@ -25,30 +25,31 @@
       {% if user.is_authenticated %}
       <div class="NavPage">
           <div class="NavTitle">
-              <h1 style="font-family: monospace;">V I S I O N</h1>
+              <a href="{% url 'index' %}">V I S I O N</a>
           </div>
           <div id="Spacer">
               &nbsp;
           </div>
-          <div style="height: 1%;width: 100%;background-color: #292c3c;">
+          <h1>{{user.first_name}}{{user.last_name}}</h1>
+          <div style="height: 1%;width: 100%;background-color: #e1e6e6;">
               &nbsp;
           </div>
           <div class="Shortcut">
-              <button id="Shortcut-buttons">Assignments</button>
+              <button id="Shortcut-buttons" onclick="ForQuizzes()">Quizzes</button>
           </div>
-          <div style="height: 1%;width: 100%;background-color: #292c3c;">
+          <div style="height: 1%;width: 100%;background-color: #e1e6e6;">
               &nbsp;
           </div>
           <div class="Shortcut">
               <button id="Shortcut-buttons">Upcoming tests</button>
           </div>
-          <div style="height: 1%;width: 100%;background-color: #292c3c;">
+          <div style="height: 1%;width: 100%;background-color: #e1e6e6;">
               &nbsp;
           </div>
           <div class="Shortcut">
               <button id="Shortcut-buttons">Past tests</button>
           </div>
-          <div style="height: 1%;width: 100%;background-color: #292c3c;">
+          <div style="height: 1%;width: 100%;background-color: #e1e6e6;">
               &nbsp;
           </div>
           <div style="height: 19%;width: 100%;">
@@ -61,30 +62,30 @@
       {% else %}
       <div class="NavPage">
         <div class="NavTitle">
-            <h1 style="font-family: monospace;">V I S I O N</h1>
+            <a href="{% url 'index' %}">V I S I O N</a>
         </div>
         <div id="Spacer">
             &nbsp;
         </div>
-        <div style="height: 1%;width: 100%;background-color: #292c3c;">
+        <div style="height: 1%;width: 100%;background-color: #e1e6e6;">
             &nbsp;
         </div>
         <div class="Shortcut">
             <button id="Shortcut-buttons">Assignments</button>
         </div>
-        <div style="height: 1%;width: 100%;background-color: #292c3c;">
+        <div style="height: 1%;width: 100%;background-color: #e1e6e6;">
             &nbsp;
         </div>
         <div class="Shortcut">
             <button id="Shortcut-buttons">Upcoming tests</button>
         </div>
-        <div style="height: 1%;width: 100%;background-color: #292c3c;">
+        <div style="height: 1%;width: 100%;background-color: #e1e6e6;">
             &nbsp;
         </div>
         <div class="Shortcut">
             <button id="Shortcut-buttons">Past tests</button>
         </div>
-        <div style="height: 1%;width: 100%;background-color: #292c3c;">
+        <div style="height: 1%;width: 100%;background-color: #e1e6e6;">
             &nbsp;
         </div>
         <div style="height: 19%;width: 100%;">
@@ -99,47 +100,46 @@
     {% endif %}
       <div class="CloseNav">
           <button id="CloseNav" style="font-size:30px;cursor:pointer" onclick="CloseNav()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="white" class="bi bi-x" viewBox="0 0 16 16">
               <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
           </svg>
       </div>
           
     </div>
-  <div class="Top-bar">
+  <div class="Top-bar" id="Top-bar-id">
     <div class="Dropdown">
       <button id="Dropdown" style="font-size:30px;cursor:pointer" onclick="OpenNav()">
       <svg xmlns="http://www.w3.org/2000/svg" width="48px" height="48px" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
       </svg>
-  </div>
+    </div>
     <div class="Middle-area">
       <a class="Title_text" href="{% url 'index' %}">V I S I O N</a>
     </div>
     <div class="Buttons">
       {% if user.is_authenticated %}
-        <button id="Logout" onclick="ForLogout()"> logout</button> 
+        <button id="Logout" onclick="ForLogout()" style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: larger;letter-spacing: 3px;background-color: transparent;border-color: transparent; cursor: pointer;"> LOG OUT</button> 
       {% else %}
         <button id="Login" onclick="ForLogin()"> Login </button>
       {% endif %}
-    </div>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
     </div>
   </div>
 
 
   <!-- Before the quiz content -->
 
-  <div class="Content" style="margin: 0 0 0 0; padding: 0;">
+  <div class="Content" id="Ceditor">
+
     {% if messages %} {% for message in messages %}
-    <div class="alert alert-warning alert-dismissable" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true"><sup>&times;</sup></span>
+    <div class="Message-alert" role="alert" id="Alert-message">
+      <button type="button" class="close" onclick="CloseAlert()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+      </svg>
       </button>
       {{message}}
     </div>
     {% endfor %} {% endif %} {% block content %} {% endblock %}
-
   </div>
 
   <!-- After the quiz content -->
@@ -153,12 +153,23 @@
       function CloseNav(){
           document.getElementById("SideNav").style.width="0";
       }
+      function CloseAlert(){
+        document.getElementById("Alert-message").style.display = "none";
+      }
       function ForLogin(){
         let path = '{% url "login" %}';
         location.href = path;
       }
       function ForLogout(){
         let path = '{% url "logout" %}';
+        location.href = path;
+      }
+      function ForQuizzes(){
+        let path = '{% url "quiz_index" %}';
+        location.href = path;
+      }
+      function ForProgess(){
+        let path = '{% url "quiz_progress" %}';
         location.href = path;
       }
       /*window.addEventListener('load', function(){
@@ -177,7 +188,7 @@
 
 <style>
   html{
-    background-color: #232634;
+    background-color: #006e82;
     margin: 0;
     height: 100%;
   }
@@ -190,9 +201,10 @@
     height: 10%;
     width: 100%;
     display: flex;
-    background-color: #f2d5cf;
+    background-color: #e1e6e6;
     align-items: center;
     vertical-align: center;
+    box-shadow: 0px 0px 15px 5px #babebe;
   }
   .Dropdown{
     /*
@@ -212,8 +224,8 @@
     width: 54px;
     height: 54px;
     padding: 0;
-    background-color: #ffffff00;
-    border-color: #ffffff00;
+    background-color: transparent;
+    border-color: transparent;
 }
 .Middle-area{
     width: 40%;
@@ -238,10 +250,19 @@
 #Login{
     width: 25%;
     height: 40%;
-    background-color: #868686;
-    border-color: #99d1db00;
+    background-color: #006e82;
+    border-color: transparent;
     border-radius: 5px;
     cursor:pointer;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: larger;
+    letter-spacing: 3px;
+    background-color: transparent;
+    border-color: transparent; 
+    cursor: pointer;
+}
+#Logout :hover{
+  background-color: #006f82;
 }
 #Register{
     /*
@@ -249,13 +270,13 @@
     */
     width: 25%;
     height: 40%;
-    background-color: #838ba700;
+    background-color: transparent;
     border-color: 1px #838ba7;
     border-radius: 5px;
     cursor:pointer;
 }
 #Login:hover{
-    background-color: #95c7d0;
+    background-color: #6eb4be;
 }
 #Register:hover{
     background-color: #838ba7;
@@ -279,7 +300,7 @@
 .NavPage{
     width: 80%;
     height: 100%;
-    background-color: #414559;
+    background-color: #006e82;
     box-shadow: 0px 0px 20px 3px #000000;
     padding: 0;
 }
@@ -287,11 +308,12 @@
     display: grid;
     padding: 0;
     top: 15%;
-    width: 15%;
-    height: 5%;
-    background-color: #737994;
+    width: 48px;
+    height: 48px;
+    background-color: #005f70;
     justify-content: center;
     align-items: center;
+    z-index: 999;
 }
 #CloseNav{
     width: 100%;
@@ -303,6 +325,20 @@
     text-align: center;
     width: 100%;
     height: 10%;
+    color: white;
+    padding-top: 15px;
+}
+.NavTitle a{
+  font-family: monospace;
+  font-size: xx-large;
+  color: white;
+  text-decoration: none;
+}
+.NavTitle a:hover{
+  font-family: monospace;
+  font-size: xx-large;
+  color: white;
+  text-decoration: none;
 }
 .Shortcut{
     height: 10%;
@@ -310,22 +346,22 @@
     display: flex;
 }
 #Spacer{
-    height: 9%;
+    height: 8%;
     width: 100%;
 }
 #Shortcut-buttons{
     width: 100%;
     height: 100%;
     font-size: 150%;
-    background-color: #626880;
-    border-color: #454a5b00;
+    background-color: #6eb4be;
+    border-color: transparent;
     cursor: pointer;
 }
 #NavLogin, #NavRegister{
     width: 100%;
     height: 30%;
-    background-color: #626880;
-    border-color: #00000000;
+    background-color: #6eb4be;
+    border-color: transparent;
     font-size: 150%;
     cursor: pointer;
 }
@@ -354,6 +390,18 @@
 .Content{
   height: 80%;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  
+}
+.Login-local-content{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 .Hero-Image{
   width: 100%;
@@ -361,8 +409,152 @@
   background-color: black;
 }
 .Index-Content{
-  text-align: centerz;
+  text-align: center;
 }
+.Login-Island{
+  background-color: #e1e6e6;
+  width: 40%;
+  height: 70%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 3px #babebe;
+}
+.Login-title-text{
+  color: black;
+  margin-bottom: 100px;
+}
+.L-Input-fields{
+  margin-bottom: 40px;
+}
+.Message-alert{
+  height: 50px;
+  width: 20%;
+  position: absolute;
+  overflow-x: hidden;
+  z-index: 20;
+  display: flex;
+  background-color: orange;
+  top: 13%;
+  left: 40%;
+  align-items: center;
+  border-color: rgb(155, 101, 0);
+  border: 2px 2px 2px 2px;
+  border-radius: 10px;
+  color: white;
+}
+.close{
+  background-color: transparent;
+  width: 50px;
+  height: 50px;
+  align-self: flex-start;
+  border-color: transparent;
+  cursor: pointer;
+}
+.Logged-Island{
+  margin: 2%;
+  padding: 5px;
+  width: 45%;
+  height: 90%;
+  border-radius: 10px;
+  background-color: #e1e6e6;
+  box-shadow: 0px 0px 10px 3px #babebe;
+  display: flex;
+}
+.upper,.lower{
+  width: 100%;
+  height: 50%;
+  display: flex;
+}
+.Practice-listings{
+  background-color: #cab4ae;
+  width: 60%;
+  height: 70%;
+  margin-left: 4%;
+  border-radius: 10px;
+  overflow-y: scroll;
+}
+.Listed{
+  width: 100%;
+  height: 10%;
+}
+.list-text{
+  margin: 0;
+  padding: 0;
+}
+.btn-overlay{
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  z-index: 15;
+  padding: 5px;
+  border-radius: 10px;
+  text-align: left;
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+}
+.Island-Quizzes{
+  width: 80%;
+  height: 90%;
+  background-color: #e1e6e6;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 3px #babebe;
+  padding: 10px;
+}
+.Quiz-list{
+  border-collapse: collapse;
+  width: 70%;
+  border-top: transparent;
 
-
+}
+.Q-row,
+.Q-column{
+  border: 1px solid #75645f;
+  height: 40px;
+  background-color: #fce3da;
+}
+.Quiz-island{
+  width: 60%;
+  height: 70%;
+  background-color: #e1e6e6;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 3px #babebe;
+  justify-content: center;
+  padding: 10px;
+}
+.Quiz-island .up{
+  background-color: #ac9088;
+  width: 100%;
+  height: 10%;
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-top: 3px;
+  align-items: center;
+  display: flex;
+}
+.Quiz-island .down{
+  background-color: #ac9088;
+  width: 100%;
+  height: 80%;
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-top: 3px;
+  margin-top: 5px;
+}
+.btn-start{
+  justify-self: center;
+}
+.Quizing-island{
+  width: 80%;
+  height: 70%;
+  background-color: #e1e6e6;
+  box-shadow: 0px 0px 10px 5px #babebe;
+  padding: 5px;
+  border-radius: 10px;
+  
+}
+.Quizbtn{
+  width: 80px;
+  height: 40px;
+  border-radius: 30px;
+  }
 </style>

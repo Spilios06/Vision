@@ -4,17 +4,22 @@
 {% block title %}{% trans "All Quizzes" %}{% endblock %}
 
 {% block content %}
-<h2>{% trans "List of quizzes" %}</h2>
-    {% if quiz_list %}
-		<table class="table table-bordered table-striped">
+<div class="Island-Quizzes">
+	<div>
+		<h2>{% trans "List of quizzes" %}</h2>
+	</div>
+
+	<div style="display: block;width: 100%;height: 80%;">
+	{% if quiz_list %}
+		<table class="Quiz-list">
 
 		  <thead>
-			<tr>
-			  <th>{% trans "Title" %}</th>
-			  <th>{% trans "Category" %}</th>
-			  <th>{% trans "Exam" %}</th>
-			  <th>{% trans "Single attempt" %}</th>
-			  <th></th>
+			<tr class="Q-row">
+			  <th class="Q-column">{% trans "Title" %}</th>
+			  <th  class="Q-column">{% trans "Category" %}</th>
+			  <th  class="Q-column">{% trans "Exam" %}</th>
+			  <th  class="Q-column">{% trans "Single attempt" %}</th>
+			  <th ></th>
 			</tr>
 		  </thead>
 
@@ -22,11 +27,11 @@
 
         {% for quiz in quiz_list %}
 
-  			<tr>
-			  <td>{{ quiz.title }}</td>
-			  <td>{{ quiz.category }}</td>
-			  <td>{{ quiz.exam_paper }}</td>
-			  <td>{{ quiz.single_attempt }}</td>
+  			<tr class="Q-row">
+			  <td class="Q-column">{{ quiz.title }}</td>
+			  <td  class="Q-column">{{ quiz.category }}</td>
+			  <td  class="Q-column">{{ quiz.exam_paper }}</td>
+			  <td  class="Q-column">{{ quiz.single_attempt }}</td>
 			  <td>
 				<a href="{% url 'quiz_start_page' slug=quiz.url %}">
 				  {% trans "View details" %}
@@ -38,7 +43,19 @@
 
 		</table>
 
-	{% else %}
-        <p>{% trans "There are no available quizzes" %}.</p>
-    {% endif %}
+		{% else %}
+        	<p>{% trans "There are no available quizzes" %}.</p>
+    	{% endif %}
+
+	</div>
+    
+</dvi>
+
+
+	<script>
+        window.addEventListener('load',function(){
+            document.getElementById("Ceditor").style.alignItems = "center";
+			document.getElementById("Ceditor").style.justifyContent = "center";
+        })
+    </script>
 {% endblock %}

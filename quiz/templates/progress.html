@@ -15,11 +15,11 @@
   <table class="table table-bordered table-striped">
 
 	<thead>
-	  <tr>
-		<th>{% trans "Category" %}</th>
-		<th>{% trans "Correctly answererd" %}</th>
-		<th>{% trans "Incorrect" %}</th>
-		<th>%</th>
+	  <tr class="Q-row">
+		<th class="Q-column">{% trans "Category" %}</th>
+		<th class="Q-column">{% trans "Correctly answererd" %}</th>
+		<th class="Q-column">{% trans "Incorrect" %}</th>
+		<th class="Q-column">%</th>
 	  </tr>
 	</thead>
 
@@ -27,11 +27,11 @@
 
 
 	  {% for cat, value in cat_scores.items %}
-	  <tr>
-		<td>{{ cat }}</td>
-		<td>{{ value.0 }}</td>
-		<td>{{ value.1 }}</td>
-		<td>{{ value.2 }}</td>
+	  <tr class="Q-row">
+		<td class="Q-column">{{ cat }}</td>
+		<td class="Q-column">{{ value.0 }}</td>
+		<td class="Q-column">{{ value.1 }}</td>
+		<td class="Q-column">{{ value.2 }}</td>
 	  </tr>
 
 	  {% endfor %}
@@ -55,11 +55,11 @@
   <table class="table table-bordered table-striped">
 
 	<thead>
-	  <tr>
-		<th>{% trans "Quiz Title" %}</th>
-		<th>{% trans "Score" %}</th>
-		<th>{% trans "Possible Score" %}</th>
-		<th>%</th>
+	  <tr class="Q-row">
+		<th class="Q-column">{% trans "Quiz Title" %}</th>
+		<th class="Q-column">{% trans "Score" %}</th>
+		<th class="Q-column">{% trans "Possible Score" %}</th>
+		<th class="Q-column">%</th>
 	  </tr>
 	</thead>
 
@@ -67,11 +67,11 @@
 
 	  {% for exam in exams %}
 
-	  <tr>
-		<td>{{ exam.quiz.title }}</td>
-		<td>{{ exam.current_score }}</td>
-		<td>{{ exam.get_max_score }}</td>
-		<td>{{ exam.get_percent_correct }}</td>
+	  <tr class="Q-row">
+		<td class="Q-column">{{ exam.quiz.title }}</td>
+		<td class="Q-column">{{ exam.current_score }}</td>
+		<td class="Q-column">{{ exam.get_max_score }}</td>
+		<td class="Q-column">{{ exam.get_percent_correct }}</td>
 	  </tr>
 
 	  {% endfor %}
@@ -81,6 +81,12 @@
   </table>
 
   {% endif %}
+  <script>
+	window.addEventListener('load',function(){
+		document.getElementById("Ceditor").style.display = "block";
+	})
+  </script>
+
 
 
 {% endblock %}

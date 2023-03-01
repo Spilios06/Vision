@@ -1,16 +1,94 @@
 {% extends "base.html" %}
-
+{% load i18n %}
+{% load quiz_tags %}
 {% block content %}
+
+
+{% if user.is_authenticated %}
+    <div class="upper">
+        <div class="Logged-Island">
+            <button class="btn-overlay" onclick="ForQuizzes()">
+            <h1 style="font-family: 'Courier New', Courier, monospace;">Practice quizzes</h1>
+            
+            <div class="Practice-listings">
+                {% if quiz_list %} 
+                <!--<h1>Nothing has released yet (quizzes)</h1>-->
+                    {% for quiz in quiz_list %}
+
+                    <div class="Listed">
+                        <h1 class="list-text">{{ quiz.title }}</h1>
+                        <tr>
+                            <td>{{ quiz.title }}</td>
+                            <td>{{ quiz.category }}</td>
+                            <td>{{ quiz.exam_paper }}</td>
+                            <td>{{ quiz.single_attempt }}</td>
+                            <td>
+                              <a href="{% url 'quiz_start_page' slug=quiz.url %}">
+                                {% trans "View details" %}
+                              </a>
+                          </tr>
+                    </div>
+
+                
+                    <div style="background-color: #ddc3be;height: 3px;width: 100%;margin-top: 8px;">
+                        &nbsp;
+                    </div>
+
+                {% endfor %}
+                {% else %}
+                    <p>This feature doesnt work yet</p>
+                {% endif %}
+                
+
+            </div>
+            </button>
+        </div>
+        
+        <div class="Logged-Island">
+            <button class="btn-overlay" onclick="ForProgess()">
+            <h1 style="line-height: 150%;font-family: 'Courier New', Courier, monospace;">Welcome, {{user.username}}<br><br>Name : <br>&emsp;&emsp; {{user.first_name}} {{user.last_name}} <br><br> Email : <br>&emsp;&emsp;</h1>
+            
+            
+            </button>
+        </div>  
+    </div>
+    
+    <div class="lower">
+    <div class="Logged-Island">
+        <button class="btn-overlay" onclick="console.log('test')">
+        <h1 style="font-family: 'Courier New', Courier, monospace;">Practice</h1>
+        </button>
+    </div>
+        
+    <div class="Logged-Island">
+        <button class="btn-overlay" onclick="console.log('test')">
+        <h1 style="font-family: 'Courier New', Courier, monospace;">Practice</h1>
+        </button>
+    </div>
+    </div>
+    
+    <!--
+    <p>Username: {{user.username}}</p>
+    <p>Name: {{user.first_name}} {{user.last_name}}</p>
+    <p>Email: {{user.email}}</p>
+    -->
+    <script>
+        window.addEventListener('load',function(){
+            document.getElementById("Ceditor").style.display = "block";
+        })
+    </script>
+
+{% else %}
 <div class="Hero-Image">
     <img src=".\static\5529077.jpg">
 </div>
 
 <h1 class="Index-Content"> Welcome </h1>  
-
-{% if user.is_authenticated %}
-    <p>Username: {{user.username}}</p>
-    <p>Name: {{user.first_name}} {{user.last_name}}</p>
-    <p>Email: {{user.email}}</p>
+<script>
+    window.addEventListener('load',function(){
+        document.getElementById("Ceditor").style.display = "block";
+    })
+</script>
 {% endif %}
 
 
