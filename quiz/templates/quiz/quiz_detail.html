@@ -11,11 +11,11 @@
     <h2 style="padding: 0;margin: 0;">{{ quiz.title }}</h2>
   </div>
   <div class="down">
-    <h2>Category : <br> &emsp;&emsp;{{ quiz.category }}</h2>
+    <h2 style="padding-bottom: 5%;">Category : <br> &emsp;&emsp;{{ quiz.category }}</h2>
     {% if quiz.single_attempt %}
-      <h4>{% trans "You will only get one attempt at this quiz" %}.</h4>
+      <h4 style="padding-bottom: 5%;">{% trans "You will only get one attempt at this quiz" %}.</h4>
     {% endif %}
-    <p>Description : <br> &emsp;&emsp;{{ quiz.description }}</p>
+    <p style="padding-bottom: 10%;">Description : <br> &emsp;&emsp;{{ quiz.description }}</p>
 
     <button class="btn-start" onclick="Quizstart()"> Start Quiz </button>
   </div>
