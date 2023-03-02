@@ -46,11 +46,20 @@
   {% if exams %}
 
   <hr>
+  
 
-  <h1>{% trans "Previous exam papers" %}</h1>
+<h1>{% trans "Previous exam papers" %}</h1>
   <p class="lead">
 	{% trans "Below are the results of exams that you have sat." %}
   </p>
+  <!--
+  {% for cat in cat %}
+  		<h1 id="Divnamesetter" style="display: none;">{{ cat }}</h1>
+  		<div style="width: 200px;height: 400px;background-color: gray;">
+			
+		</div>
+  {% endfor %}
+	-->
 
   <table class="table table-bordered table-striped">
 
@@ -81,6 +90,10 @@
   </table>
 
   {% endif %}
+
+  
+  
+
   <script>
 	window.addEventListener('load',function(){
 		document.getElementById("Ceditor").style.display = "block";
