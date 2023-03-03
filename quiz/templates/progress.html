@@ -7,8 +7,9 @@
 {% block description %} {% trans "User Progress Page" %} {% endblock %}
 
 {% block content %}
+<div class="Progres-Island">
 
-  {% if cat_scores %}
+{% if cat_scores %}
 
   <h1>{% trans "Question Category Scores" %}</h1>
 
@@ -61,42 +62,56 @@
   {% endfor %}
 	-->
 
-  <table class="table table-bordered table-striped">
 
-	<thead>
-	  <tr class="Q-row">
-		<th class="Q-column">{% trans "Quiz Title" %}</th>
-		<th class="Q-column">{% trans "Score" %}</th>
-		<th class="Q-column">{% trans "Possible Score" %}</th>
-		<th class="Q-column">%</th>
-	  </tr>
-	</thead>
+	<div class="past-exams">
+		<table class="table table-bordered table-striped">
 
-	<tbody>
+			<thead>
+			  <tr class="Q-row">
+				<th class="Q-column">{% trans "Quiz Title" %}</th>
+				<th class="Q-column">{% trans "Score" %}</th>
+				<th class="Q-column">{% trans "Possible Score" %}</th>
+				<th class="Q-column">%</th>
+			  </tr>
+			</thead>
+		
+			<tbody>
+		
+			  {% for exam in exams %}
+		
+			  <tr class="Q-row">
+				<td class="Q-column">{{ exam.quiz.title }}</td>
+				<td class="Q-column">{{ exam.current_score }}</td>
+				<td class="Q-column">{{ exam.get_max_score }}</td>
+				<td class="Q-column">{{ exam.get_percent_correct }}</td>
+			  </tr>
+		
+			  {% endfor %}
+		
+			</tbody>
+		
+		  </table>
+		
+		  {% endif %}
 
-	  {% for exam in exams %}
+	</div>
+  
 
-	  <tr class="Q-row">
-		<td class="Q-column">{{ exam.quiz.title }}</td>
-		<td class="Q-column">{{ exam.current_score }}</td>
-		<td class="Q-column">{{ exam.get_max_score }}</td>
-		<td class="Q-column">{{ exam.get_percent_correct }}</td>
-	  </tr>
 
-	  {% endfor %}
 
-	</tbody>
 
-  </table>
 
-  {% endif %}
+</div>
+  
 
   
   
 
   <script>
 	window.addEventListener('load',function(){
-		document.getElementById("Ceditor").style.display = "block";
+		document.getElementById("Ceditor").style.justifyContent = "center";
+		document.getElementById("Ceditor").style.alignItems = "center";
+		
 	})
   </script>
 

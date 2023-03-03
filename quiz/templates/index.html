@@ -5,6 +5,7 @@
 
 
 {% if user.is_authenticated %}
+<!--
     <div class="upper">
         <div class="Logged-Island">
             <button class="btn-overlay" onclick="ForQuizzes()">
@@ -12,7 +13,7 @@
             
             <div class="Practice-listings">
                 {% if quiz_list %} 
-                <!--<h1>Nothing has released yet (quizzes)</h1>-->
+                
                     {% for quiz in quiz_list %}
 
                     <div class="Listed">
@@ -67,20 +68,78 @@
     </div>
     </div>
     
+    WORKING MAIN
+-->
+
     <!--
     <p>Username: {{user.username}}</p>
     <p>Name: {{user.first_name}} {{user.last_name}}</p>
     <p>Email: {{user.email}}</p>
-    -->
+    
     <script>
         window.addEventListener('load',function(){
             document.getElementById("Ceditor").style.display = "block";
         })
     </script>
+   -->
+
+
+   <div style="height: 15%;width: 100%;justify-content: center;align-items: center; text-align: center;">
+        <h1 style="font-size: 2vw;margin: 0;padding-top: 5px;">Welcome,  {{user.username}}</h1>
+   </div>
+
+
+
+   <div style="display: flex;align-items: center;justify-content: center; height: 90%;" id="Initiatorbtn">
+
+        <div id="Progress-pill">
+            <button style="width: 100%;height: 100%;background-color: transparent;border: 0;cursor: pointer;" onclick="ForProgess()">
+                <h1>Progress</h1>
+            </button>
+        </div> 
+        <div class="Initializing-island">
+            <button style="width: 100%;height: 100%;background-color: transparent;border: 0;cursor: pointer;" onclick="Initating()">
+                <h1 style="font-size: 20pxvw;">Initiate mathematics</h1>
+            </button>
+        </div> 
+
+        <div id="Quiz-pill">
+            <button style="width: 100%;height: 100%;background-color: transparent;border: 0;cursor: pointer;" onclick="ForQuizzes()">
+                <h1>Quizzes</h1>
+            </button>
+        </div> 
+   </div>
+   
+    
+
+
+
+   <script style="visibility: hidden;">
+        window.addEventListener('load', function(){
+            let contarea = document.getElementById('Ceditor');
+            contarea.style.display = "block";
+
+        })
+        function Initating(){
+            let start_btn= document.getElementById("Initiatorbtn");
+            let progress_btn = document.getElementById("Progress-pill");
+            let Quiz_btn = document.getElementById("Quiz-pill");
+            start_btn.style.visibility = "hidden";
+            progress_btn.style.visibility = "visible";
+            Quiz_btn.style.visibility = "visible";
+            progress_btn.style.transform = "translate(-200px,-200px)";
+            Quiz_btn.style.transform = "translate(200px,-200px)";  
+
+        }
+   </script>
+
+
+
+
 
 {% else %}
 <div class="Hero-Image">
-    <img src="media\5529077.jpg">
+    <img src="/media/5529077.jpg" style="width: 100%;height: 100%;">
 </div>
 
 <h1 class="Index-Content"> Welcome </h1>  
