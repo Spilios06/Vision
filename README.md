@@ -36,4 +36,4 @@ python manage.py createsuperuser
 
 ## Credits
 
-* **Original Repo** -> [repo](https://github.com/sswapnil2/django-quiz-app.git)
+* **Original Repo** -> [repo](https://github.com/tomwalker/django_quiz.git)
